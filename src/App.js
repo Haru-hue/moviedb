@@ -24,14 +24,17 @@ function App() {
 
     useEffect(() => {
       getMovies()
-    }, [])
+    })
 
-    console.log(searchResults)
-    console.log(movieData)
+    const movies = movieData?.map(item => {
+      return <Film key={item.imdbID} id={item.imdbID}/>
+    })
+
     return (
       <>
         <Header handleSearch={handleSearch}/>
         <Body/>
+        {movies}
       </>
     )
 }

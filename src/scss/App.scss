@@ -1,9 +1,16 @@
 @use './theme.light';
 
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .header {
-    flex-direction: column;
-    justify-content: space-around;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
     position: sticky;
+    justify-content: center;
     height: 235px;
     background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0,0,0, 0.5)),
     url("../images/header.jpg");
@@ -16,17 +23,23 @@ svg {
     color: black;
 }
 
+.rating svg {
+    color: gold;
+}
+
 .film-header {
-    justify-content: space-around;
+    justify-content: space-between;
     color: white;
 }
 
 .search-container {
     border-radius: 8px;
     position: relative;
-    bottom: -5rem;
-    max-width: 400px;
-    width: 120%;
+    bottom: -7rem;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .icon-container {
@@ -44,12 +57,49 @@ svg {
 .search-input {
     border-radius: 8px 0 0 8px;
     width: 100%;
+    flex: 4;
 }
 
 .search-btn {
     border-radius: 0 8px 8px 0;
+    flex: 1
 }
 
 section {
     justify-content: center;
+    margin: 0 auto;
+}
+
+.film {
+    align-items: center;
+    border-bottom: 1.5px solid #E5E7EB;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    max-width: 700px;
+    padding: 2rem 0;
+    width: 90%;
+}
+
+.image {
+    height: 100%;
+    max-width: 100%;
+    width: fit-content;
+    img {
+        height: 220px;
+        object-fit: cover;
+        width: 160px;
+    }
+}
+
+.film-section {
+    flex-direction: column;
+    padding-inline: 1rem;
+}
+
+.desc {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding-block: 1rem;
 }
