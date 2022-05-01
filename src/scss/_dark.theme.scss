@@ -1,0 +1,41 @@
+@mixin white-text {
+    color: white;
+}
+
+@mixin dark-mode {
+    background: #2E2E2F;
+    @include white-text()
+}
+
+.toggler--slider.dark {
+    justify-content: flex-end;
+    color: #D5D4D8;
+}
+
+.search-container.dark {
+    background: #2E2E2F;
+    border: none;
+    input {
+        @include dark-mode()
+    }
+    button {
+        background: #4B4B4B;
+        @include white-text()
+    }
+}
+
+html.dark, .toggler--slider--circle.dark {
+    background: #121212;
+}
+
+.film-container.dark {
+    @include white-text();
+}
+
+.toggler--slider.dark {
+    background-color: white;
+}
+
+.toggler--dark {
+    color: #D5D4D8;
+  }

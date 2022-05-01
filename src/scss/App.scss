@@ -1,105 +1,189 @@
-@use './theme.light';
+@use "./light.theme";
+@use "./dark.theme";
 
-body {
-    font-family: 'Poppins', sans-serif;
+body, html {
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    position: sticky;
-    justify-content: center;
-    height: 235px;
-    background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0,0,0, 0.5)),
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: sticky;
+  justify-content: center;
+  height: 250px;
+  background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
     url("../images/header.jpg");
-    background-size: cover;
-    background-position: -60% 20%;
-    color: white;
-}
-
-svg {
-    color: black;
-}
-
-.rating svg {
-    color: gold;
-}
-
-.film-header {
-    justify-content: space-between;
-    color: white;
-}
-
-.search-container {
-    border-radius: 8px;
-    position: relative;
-    bottom: -7rem;
-    width: 70%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.icon-container {
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.5rem;
-}
-
-.search-container input, .search-container button {
-    border: none;
-    outline: none;
-    padding: 10px 15px;
-}
-
-.search-input {
-    border-radius: 8px 0 0 8px;
-    width: 100%;
-    flex: 4;
-}
-
-.search-btn {
-    border-radius: 0 8px 8px 0;
-    flex: 1
+  background-size: cover;
+  background-position: -60% 20%;
+  color: white;
 }
 
 section {
-    justify-content: center;
-    margin: 0 auto;
+  justify-content: center;
+  margin: 0 auto;
 }
 
+.movie-body {
+  padding-top: 30vh;
+  margin: 0 auto;
+  font-size: 1.3rem;
+  svg {
+    font-size: 2rem;
+  }
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  svg {
+    color: gold;
+  }
+}
+
+.title {
+  font-size: 2.625rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.search-container {
+  border-radius: 8px;
+  position: relative;
+  bottom: -7rem;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  svg {
+    color: #9CA3AF;
+  }
+}
+
+.icon-container {
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.search-container input,
+.search-container button {
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+}
+
+.search-input {
+  border-radius: 8px 0 0 8px;
+  width: 100%;
+  flex: 4;
+}
+
+.search-btn {
+  border-radius: 0 8px 8px 0;
+  flex: 1;
+}
+
+.search-text {
+  max-width: 400px;
+}
+
+//Film CSS
+
 .film {
-    align-items: center;
-    border-bottom: 1.5px solid #E5E7EB;
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-start;
-    max-width: 700px;
-    padding: 2rem 0;
-    width: 90%;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 2rem 0rem;
+  max-width: 700px;
+  width: 90%;
+  font-size: .9rem;
 }
 
 .image {
-    height: 100%;
-    max-width: 100%;
-    width: fit-content;
-    img {
-        height: 220px;
-        object-fit: cover;
-        width: 160px;
-    }
+  height: 100%;
+  max-width: 100%;
+  width: fit-content;
+  img {
+    object-fit: cover;
+    min-width: 160px;
+    height: 220px;
+  }
 }
 
 .film-section {
-    flex-direction: column;
-    padding-inline: 1rem;
+  flex-direction: column;
+  padding-inline: 1rem;
+}
+
+.film-header {
+  justify-content: space-between;
+  color: white;
+}
+
+.watch--counter {
+  padding-top: 15px;
+  cursor: pointer;
+  .BaseBadge-badge {
+    background-color: goldenrod;
+  }
+}
+
+.film-sidetext {
+  font-size: 1.1rem;
 }
 
 .desc {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    padding-block: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  padding-block: 1rem;
 }
+
+.movie {
+  display: flex;
+}
+
+.movie-header {
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 1.25rem;
+  padding-block: 1rem;
+}
+
+//Toggler
+
+.toggler {
+  display: flex;
+  align-items: center;
+}
+
+.toggler p {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+.toggler--slider {
+  width: 25px;
+  height: 13px;
+  border-radius: 2rem;
+  margin-inline: 7px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+
+.toggler--slider--circle {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+}
+
+
+

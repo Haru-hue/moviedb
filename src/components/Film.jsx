@@ -1,5 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect} from "react"
 import StarIcon from '@mui/icons-material/Star';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { Button } from "@mui/material";
 
 function Film (props) {
     const [results, setResults] = useState({
@@ -23,12 +26,13 @@ function Film (props) {
             genres: data.Genre,
           })
     }
-      getFilmData()
+    
+    useEffect(() => { getFilmData() })
     
     return (
         <section className="section film is-flex">
             <div className="image is-flex">
-               {results.image !== null && <img src={results.image} alt={results.title}/>}
+               {results.image !== 'N/A' && <img src={results.image} alt={results.title}/>}
             </div>
            <div className="film-section is-flex">
             <div className="movie-header is-flex">
@@ -41,6 +45,11 @@ function Film (props) {
             <div className="desc is-flex">
                 <h3>{results.time}</h3>
                 <h3>{results.genres}</h3>
+                <Button className="watchlist-btn"
+				startIcon={props.addFilm ? <RemoveCircleIcon/> : <AddCircleIcon/>}
+                onClick={props.toggleFilm}>
+						{props.addFilm ? "Remove" : "Watchlist"}
+				</Button>
             </div>
             {results.plot}
            </div>
