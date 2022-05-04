@@ -5,6 +5,14 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Button } from "@mui/material";
 
 function Film (props) {
+    const isFavorite = props.watchlist.includes(props.id)
+    function handleClick () {
+        if(isFavorite) {
+            return props.setWatchlist(prev => prev.filter(p => p !== props.id))
+        }
+        props.setWatchlist(prev => [...prev, props.id])
+    }
+
     const [results, setResults] = useState({
         image: '',
         title: '',
@@ -13,21 +21,21 @@ function Film (props) {
         time: '',
         genres: '',
     })
-
-    async function getFilmData () {
-          const res = await fetch(`https://www.omdbapi.com/?i=${props.id}&apikey=4c541d31`)
-          const data = await res.json()
-          setResults({
-            image: data.Poster,
-            title: data.Title,
-            rating: data.imdbRating,
-            plot: data.Plot,
-            time: data.Runtime,
-            genres: data.Genre,
-          })
-    }
-    
-    useEffect(() => { getFilmData() })
+ 
+    useEffect(() => {
+        async function getFilmData () {
+            const res = await fetch(`https://www.omdbapi.com/?i=${props.id}&apikey=4c541d31`)
+            const data = await res.json()
+            setResults({
+              image: data.Poster,
+              title: data.Title,
+              rating: data.imdbRating,
+              plot: data.Plot,
+              time: data.Runtime,
+              genres: data.Genre,
+            })
+      }
+        getFilmData() }, [props.id])
     
     return (
         <section className="section film is-flex">
@@ -43,13 +51,13 @@ function Film (props) {
                 </p>
             </div>
             <div className="desc is-flex">
-                <h3>{results.time}</h3>
-                <h3>{results.genres}</h3>
-                <Button className="watchlist-btn"
-				startIcon={props.addFilm ? <RemoveCircleIcon/> : <AddCircleIcon/>}
-                onClick={props.toggleFilm}>
-						{props.addFilm ? "Remove" : "Watchlist"}
-				</Button>
+                <span><h3>{results.time}</h3></span>
+                <span><h3>{results.genres}</h3></span>
+                <span><Button className="watchlist-btn"
+				startIcon={isFavorite ? <RemoveCircleIcon/> : <AddCircleIcon/>}
+                onClick={handleClick}>
+						{isFavorite ? "Remove" : "Watchlist"}
+				</Button></span>
             </div>
             {results.plot}
            </div>

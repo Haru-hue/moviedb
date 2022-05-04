@@ -20,7 +20,7 @@ export default function Header (props) {
                         {props.isClicked ? "My Watchlist" : "Find your film"}
                         </h2>               
                     <div className="film-sidetext">
-                    <Badge color="secondary" badgeContent={props.watchList}>
+                    <Badge color="secondary" badgeContent={props.watchlist.length}>
                         <Button
                             onClick={props.toggleClick}
                         >

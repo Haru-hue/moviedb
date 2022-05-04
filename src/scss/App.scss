@@ -1,8 +1,12 @@
 @use "./light.theme";
 @use "./dark.theme";
 
-body, html {
+body, html, .film-sidetext button, .desc button {
   font-family: "Poppins", sans-serif;
+}
+
+.film-sidetext button {
+  color: whitesmoke;
 }
 
 .header {
@@ -37,9 +41,10 @@ section {
 .rating {
   display: flex;
   justify-content: space-between;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   svg {
     color: gold;
+    font-size: 1.25rem;
   }
 }
 
@@ -133,6 +138,9 @@ section {
 
 .film-sidetext {
   font-size: 1.1rem;
+  button {
+    color: whitesmoke;
+  }
 }
 
 .desc {
