@@ -4,6 +4,7 @@ import "./scss/App.scss"
 import Film from './components/Film';
 import Header from './components/Header';
 import Body from './components/Body';
+import env from 'react-dotenv'
 
 const useLocalStorage = (key, initialValue)  => {
     const [storeValue, setStoreValue] = useState(() => {
@@ -44,9 +45,9 @@ function App() {
 
     useEffect(() => {
       async function getMovies() {
-        if (searchResults !== undefined) {
+        if (searchResults !== undefined) { 
           const res = await fetch(
-            `https://www.omdbapi.com/?s=${searchResults}&type=movie&page=1&apikey=${process.env.REACT_APP_API_KEY}`
+            `https://www.omdbapi.com/?s=${searchResults}&type=movie&page=1&apikey=${env.REACT_APP_API_KEY}`
           );
           const data = await res.json();
           setMovieData(data["Search"]?.map(item => item.imdbID));
